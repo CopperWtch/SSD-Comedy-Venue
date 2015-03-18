@@ -7,6 +7,11 @@ public class Comedian implements Serializable{
 	private String name;
 	private String desc;
 	
+	/**
+	 * @param id
+	 * @param name
+	 * @param desc
+	 */
 	public Comedian(int id, String name, String desc)
 	{
 		super();

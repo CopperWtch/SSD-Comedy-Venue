@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
+import java.util.ArrayList;
 
 public class Event implements Serializable{
 //TODO
@@ -13,9 +13,20 @@ public class Event implements Serializable{
 	 private int minAge;
 	 private Date date;
 	 private int count;
-	 List<Comedian> comedians;
+	 private int seats;
+	 private ArrayList<Comedian> comedians;
 
-	public Event(int id, String name, float price, String desc, int minAge, Date date, int count, List<Comedian> comedians)
+		/**
+		 * @param id
+		 * @param name
+		 * @param price
+		 * @param desc
+		 * @param minAge
+		 * @param date
+		 * @param count
+		 * @param comedians
+		 */
+	public Event(int id, String name, float price, String desc, int minAge, Date date, int count,int seats, ArrayList<Comedian> comedians)
 	 {
 		 super();
 		 this.id = id;
@@ -25,6 +36,7 @@ public class Event implements Serializable{
 		 this.minAge=minAge;
 		 this.date=date;
 		 this.count=count;
+		 this.seats=seats;
 		 this.comedians=comedians;
 	 }
 
@@ -86,12 +98,20 @@ public class Event implements Serializable{
 	public void setCount(int count) {
 		this.count = count;
 	}
-	 
-	 public List<Comedian> getComedians() {
+	
+	public int getSeats() {
+		return seats;
+	}
+
+	public void setSeats(int seats) {
+		this.seats = seats;
+	}
+	
+	 public ArrayList<Comedian> getComedians() {
 		return comedians;
 	}
 
-	public void setComedians(List<Comedian> comedians) {
+	public void setComedians(ArrayList<Comedian> comedians) {
 		this.comedians = comedians;
 	}
 
