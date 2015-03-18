@@ -15,7 +15,7 @@ public class Customer implements Serializable{
 	 * @param email
 	 * @param phone number
 	 */
-	public Customer(int id, String name, String emai, String phoneNr)
+	public Customer(int id, String name, String email, String phoneNr)
 	{
 		this.id=id;
 		this.name=name;
