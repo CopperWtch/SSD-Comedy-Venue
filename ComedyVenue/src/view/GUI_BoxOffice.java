@@ -1,3 +1,4 @@
+package view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -7,6 +8,7 @@ import java.awt.Rectangle;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -16,17 +18,25 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import model.Comedian;
+import model.Event;
+
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 
 
 
 public class GUI_BoxOffice extends JFrame {
 
+	//GUI elements
+	//put all those here 
 	private JPanel contentPane;
 	private JList<Event> lstEvents;
 	private JList<Comedian> lstComedians;
+	private JButton btnBookings;
 
 	/**
+	 *
 	 * Create the frame.
 	 */
 	public GUI_BoxOffice() {
@@ -89,15 +99,59 @@ public class GUI_BoxOffice extends JFrame {
 		
 		pnlLeft.add(comediansScroller);
 		
-		
-		
 		//add to Layout
 		contentPane.add(pnlLeft,BorderLayout.WEST);
 		
-		//Right side:
-		BorderLayout layoutRight = new BorderLayout();
-		JPanel pnlRight=new JPanel(layoutRight);
 		
+		
+		//Right side:
+		JPanel pnlRight=new JPanel();
+		BoxLayout layoutRight = new BoxLayout(pnlRight, BoxLayout.Y_AXIS);
+		pnlRight.setLayout(layoutRight);
+		
+		//Label for event details
+		JLabel lblEventDetails = new JLabel("Event Details");
+		lblEventDetails.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		lblEventDetails.setFont(new Font("Arial", Font.BOLD, 16));
+		pnlRight.add(lblEventDetails);
+		
+		//TODO: Labels for event details
+		
+		btnBookings = new JButton("Bookings");
+		pnlRight.add(btnBookings);
+		
+		//Label for comedian details
+		JLabel lblComedianDetails = new JLabel("Comedian Details");
+		lblComedianDetails.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		lblComedianDetails.setFont(new Font("Arial", Font.BOLD, 16));
+		pnlRight.add(lblComedianDetails);
+		
+		//TODO: Labels for event details
+		
+		
+		//add to layout
+		contentPane.add(pnlRight,BorderLayout.EAST);	
 	}
+	
+// Add these some time	
+//    public void resetView(){
+//    }
+//
+//    public String getEingabe(){
+//    	return "";
+//    }
+//
+//    public void setErgebnis(String erg){
+//    }
+
+    /**
+     * Functions to add ActionListeners
+     * 
+     */
+    
+    public void setBookingsListener(ActionListener l){
+        this.btnBookings.addActionListener(l);
+    }
+
 
 }
