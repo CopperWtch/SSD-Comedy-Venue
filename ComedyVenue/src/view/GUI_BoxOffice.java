@@ -1,5 +1,6 @@
 package view;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
@@ -16,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 import model.Comedian;
@@ -29,11 +31,42 @@ import java.awt.event.ActionListener;
 public class GUI_BoxOffice extends JFrame {
 
 	//GUI elements
-	//put all those here 
 	private JPanel contentPane;
+	private JLabel lblHead;
+	
+	//Top
+	private JPanel pnlTop;
+	
+		//LEFT
+	private JLabel lblEvents;
 	private JList<Event> lstEvents;
+	
+	
+		//RIGHT
+		private JPanel pnlEventDetails;
+		private JPanel pnlButtons;
+		private JPanel pnlData;
+		
+		private JLabel lblEventName;
+		private JLabel lblEventDate;
+		private JLabel lblEventDesc;
+		private JLabel lblEventSeats;
+		private JLabel lblEventAge;
+		private JButton btnBookings;
+		private JButton btnFeedback;
+	
+	//Bottom
+	private JPanel pnlBottom;
+	
+	//LEFT
 	private JList<Comedian> lstComedians;
-	private JButton btnBookings;
+	
+	
+	//RIGHT
+	private JPanel pnlComedianDetails;
+	private JLabel lblComedianName;
+	private JLabel lblComedianDesc;
+
 
 	/**
 	 *
@@ -46,91 +79,103 @@ public class GUI_BoxOffice extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		BorderLayout borderlayout = new BorderLayout();
-		contentPane.setLayout(borderlayout);
+		contentPane.setLayout(new BoxLayout(
+				contentPane, BoxLayout.Y_AXIS ));
+		
 	
+		//TOP
+		lblHead = new JLabel("Comedy Venue - Box Office");
 		
-		//create Headline
-		JLabel lblHead = new JLabel("Box Office",SwingConstants.CENTER);
-		lblHead.setFont(new Font("Arial", Font.BOLD, 16));
+		//TOP LEFT
+		pnlTop = new JPanel();
+		pnlTop.setLayout(new BoxLayout(pnlTop, BoxLayout.X_AXIS));
+		
+		//lblEvents = new JLabel("EVENTS");
+		
+		lstEvents =  new JList<Event>();
+		JScrollPane spEvents = new JScrollPane(lstEvents);
+		spEvents.setMaximumSize(new Dimension(500,600));
+		spEvents.setBorder(BorderFactory.createTitledBorder("Events"));
 
-		//add Headline
-		contentPane.add(lblHead,BorderLayout.NORTH);
 		
-		//-----------------------
-		//Left side:
+		//TOP RIGHT
+		pnlEventDetails = new JPanel();
+		pnlEventDetails.setBorder(BorderFactory.createTitledBorder("Event details"));
+		//pnlEventDetails.setLayout(new BoxLayout(pnlEventDetails, BoxLayout.Y_AXIS));
+		pnlEventDetails.setLayout(new BorderLayout());
+		pnlEventDetails.setMaximumSize(new Dimension(500,600));
 		
-		//create Layout & Panel
-		JPanel pnlLeft=new JPanel();
-		BoxLayout layoutLeft = new BoxLayout(pnlLeft, BoxLayout.Y_AXIS);
-		pnlLeft.setLayout(layoutLeft);
+		lblEventName = new JLabel("NAME");
+		lblEventDate = new JLabel("DATE");
+		lblEventDesc = new JLabel("DESCRIPTION");
+		lblEventSeats = new JLabel("SEATS");
+		lblEventAge = new JLabel("AGE");
 		
-		//Label for events
-		JLabel lblEvents = new JLabel("Events");
-		lblEvents.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		lblEvents.setFont(new Font("Arial", Font.BOLD, 16));
-		pnlLeft.add(lblEvents);
-		
-		//List of Events
-		lstEvents = new JList<Event>(); //data has type Object[]
-		lstEvents.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		lstEvents.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		lstEvents.setVisibleRowCount(-1);
-		//lstEvents.setBounds(new Rectangle(400,400));
-		JScrollPane eventsScroller = new JScrollPane(lstEvents);
-		eventsScroller.setPreferredSize(new Dimension(400, 200));
-		
-		pnlLeft.add(eventsScroller);
-		
-		//Label for events
-		JLabel lblComedians = new JLabel("Comedians");
-		lblComedians.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		lblComedians.setFont(new Font("Arial", Font.BOLD, 16));
-		pnlLeft.add(lblComedians);
-		
-		//List of Comedians
-		lstComedians = new JList<Comedian>(); //data has type Object[]
-		lstComedians.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		lstComedians.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		lstComedians.setVisibleRowCount(-1);
-		//lstEvents.setBounds(new Rectangle(400,400));
-		JScrollPane comediansScroller = new JScrollPane(lstEvents);
-		comediansScroller.setPreferredSize(new Dimension(400, 200));
-		
-		pnlLeft.add(comediansScroller);
-		
-		//add to Layout
-		contentPane.add(pnlLeft,BorderLayout.WEST);
-		
-		
-		
-		//Right side:
-		JPanel pnlRight=new JPanel();
-		BoxLayout layoutRight = new BoxLayout(pnlRight, BoxLayout.Y_AXIS);
-		pnlRight.setLayout(layoutRight);
-		
-		//Label for event details
-		JLabel lblEventDetails = new JLabel("Event Details");
-		lblEventDetails.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		lblEventDetails.setFont(new Font("Arial", Font.BOLD, 16));
-		pnlRight.add(lblEventDetails);
-		
-		//TODO: Labels for event details
+		pnlButtons = new JPanel();
+		pnlButtons.setLayout(new BoxLayout(pnlButtons, BoxLayout.X_AXIS));
+
 		
 		btnBookings = new JButton("Bookings");
-		pnlRight.add(btnBookings);
+		btnFeedback = new JButton("Feedback");
 		
-		//Label for comedian details
-		JLabel lblComedianDetails = new JLabel("Comedian Details");
-		lblComedianDetails.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		lblComedianDetails.setFont(new Font("Arial", Font.BOLD, 16));
-		pnlRight.add(lblComedianDetails);
+		pnlButtons.add(btnBookings);
+		pnlButtons.add(btnFeedback);
 		
-		//TODO: Labels for event details
+		pnlData = new JPanel();
+		pnlData.setLayout(new BoxLayout(pnlData, BoxLayout.Y_AXIS));
+		
+		//pnlEventDetails.setMaximumSize(new Dimension(400,200));
+		pnlData.add(lblEventName);
+		pnlData.add(lblEventDate);
+		pnlData.add(lblEventDesc);
+		pnlData.add(lblEventSeats);
+		pnlData.add(lblEventAge);
+		
+		pnlEventDetails.add(pnlData, BorderLayout.CENTER);
+		pnlEventDetails.add(pnlButtons, BorderLayout.SOUTH);
+		
+		pnlTop.add(spEvents);
+		pnlTop.add(pnlEventDetails);
+		
+		//BOTTOM
+		pnlBottom = new JPanel();
+		pnlBottom.setLayout(new BoxLayout(pnlBottom, BoxLayout.X_AXIS));
+
+		//LEFT
+		//lblComedians = new JLabel("COMEDIANS");
+		
+		lstComedians=  new JList<Comedian>();
+		JScrollPane spComedians = new JScrollPane(lstComedians);
+		spComedians.setMaximumSize(new Dimension(500,200));
+		spComedians.setBorder(BorderFactory.createTitledBorder("Comedians"));
+		
+		//RIGHT
+		
+		pnlComedianDetails = new JPanel();
+		pnlComedianDetails.setBorder(BorderFactory.createTitledBorder("Comedian details"));
+		pnlComedianDetails.setLayout(new BoxLayout(pnlComedianDetails, BoxLayout.Y_AXIS));
+		pnlComedianDetails.setMaximumSize(new Dimension(500,200));
+		
+		lblComedianName = new JLabel("COMEDIAN");
+		lblComedianDesc = new JLabel("DESCRIPTION");
 		
 		
-		//add to layout
-		contentPane.add(pnlRight,BorderLayout.EAST);	
+
+		pnlComedianDetails.add(lblComedianName);
+		pnlComedianDetails.add(lblComedianDesc);
+		
+		//COMEDIANS
+		
+		
+		
+		pnlBottom.add(spComedians);
+		pnlBottom.add(pnlComedianDetails);
+		
+		//add both sides to parent panel
+		//contentPane.add(lblHead);
+		contentPane.add(pnlTop);
+		contentPane.add(pnlBottom);
+		
 	}
 	
 // Add these some time	
@@ -151,6 +196,10 @@ public class GUI_BoxOffice extends JFrame {
     
     public void setBookingsListener(ActionListener l){
         this.btnBookings.addActionListener(l);
+    }
+    
+    public void setFeedbackListener(ActionListener l){
+        this.btnFeedback.addActionListener(l);
     }
 
 

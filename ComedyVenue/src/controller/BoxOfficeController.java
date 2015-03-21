@@ -3,23 +3,25 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import view.GUI_Bookings;
 import view.GUI_BoxOffice;
 
 public class BoxOfficeController {
 
-	private GUI_BoxOffice _view;
+	private GUI_BoxOffice _viewMain;
+	//private GUI_Bookings _viewBookings;
 	//attr for model
 	
 	
 	public BoxOfficeController()
 	{
-		this._view = new GUI_BoxOffice();
+		this._viewMain = new GUI_BoxOffice();
 		
-		addListener();
+		addMainListener();
 	}
 	
 	public void showView(){
-        this._view.setVisible(true);
+        this._viewMain.setVisible(true);
     }
 
 	
@@ -27,9 +29,12 @@ public class BoxOfficeController {
 	 * View is introduced to the Listeners
 	 * to enable communication with controller
      */
-	private void addListener() {
+	private void addMainListener() {
 		// TODO Auto-generated method stub
-		this._view.setBookingsListener(new BookingsListener());
+		
+		this._viewMain.setBookingsListener(new BookingsListener());
+		this._viewMain.setFeedbackListener(new FeedbackListener());
+
 	}
 	
 	 /**
@@ -41,8 +46,68 @@ public class BoxOfficeController {
      * 4: Wieder der View zum Darstellen übergeben
      *
      * TODO : check for errors
+     * 
+     * MAIN WINDOW
      */
-    class BookingsListener implements ActionListener{
+    class BookingsListener implements ActionListener{ 
+    	GUI_Bookings _viewBookings;
+        public void actionPerformed(ActionEvent e) {
+          //get values from view: value = (_view.getWhatever())
+        	// get Event Data from view = _view.getSelectedEvent()
+        	//use event Data to load the bookings _model.GetBookingsForEvent(data)
+        	//Start Popup
+        	_viewBookings= new GUI_Bookings();
+        	 this._viewBookings.setVisible(true);
+        	addBookingsListener();
+        }
+        
+		private void addBookingsListener() {
+			
+			this._viewBookings.setSaveListener(new SaveListener());
+			this._viewBookings.setRemoveListener(new RemoveListener());
+			this._viewBookings.setClearListener(new ClearListener());
+			this._viewBookings.setReturnListener(new ReturnListener());
+			
+		}
+    }
+    
+    class FeedbackListener implements ActionListener{
+        public void actionPerformed(ActionEvent e) {
+          //get values from view: value = (_view.getWhatever())
+          //use values to perform the needed action (_model.DoWhatever(value))
+          //update view _view.setWhatever(....)
+        }
+    }
+    
+    
+	/**
+	 * Bookings Popup
+     */
+    class SaveListener implements ActionListener{
+        public void actionPerformed(ActionEvent e) {
+          //get values from view: value = (_view.getWhatever())
+          //use values to perform the needed action (_model.DoWhatever(value))
+          //update view _view.setWhatever(....)
+        }
+    }
+    
+    class RemoveListener implements ActionListener{
+        public void actionPerformed(ActionEvent e) {
+          //get values from view: value = (_view.getWhatever())
+          //use values to perform the needed action (_model.DoWhatever(value))
+          //update view _view.setWhatever(....)
+        }
+    }
+    
+    class ClearListener implements ActionListener{
+        public void actionPerformed(ActionEvent e) {
+          //get values from view: value = (_view.getWhatever())
+          //use values to perform the needed action (_model.DoWhatever(value))
+          //update view _view.setWhatever(....)
+        }
+    }
+    
+    class ReturnListener implements ActionListener{
         public void actionPerformed(ActionEvent e) {
           //get values from view: value = (_view.getWhatever())
           //use values to perform the needed action (_model.DoWhatever(value))

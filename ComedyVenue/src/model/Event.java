@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 
+@SuppressWarnings("serial")
 public class Event implements Serializable{
 //TODO
 	 private int id;
@@ -12,7 +13,6 @@ public class Event implements Serializable{
 	 private String desc;
 	 private int minAge;
 	 private Date date;
-	 private int count;
 	 private int seats;
 	 private ArrayList<Comedian> comedians;
 
@@ -23,10 +23,9 @@ public class Event implements Serializable{
 		 * @param desc
 		 * @param minAge
 		 * @param date
-		 * @param count
 		 * @param comedians
 		 */
-	public Event(int id, String name, float price, String desc, int minAge, Date date, int count,int seats, ArrayList<Comedian> comedians)
+	public Event(int id, String name, float price, String desc, int minAge, Date date, int seats, ArrayList<Comedian> comedians)
 	 {
 		 super();
 		 this.id = id;
@@ -35,7 +34,6 @@ public class Event implements Serializable{
 		 this.desc=desc;
 		 this.minAge=minAge;
 		 this.date=date;
-		 this.count=count;
 		 this.seats=seats;
 		 this.comedians=comedians;
 	 }
@@ -89,14 +87,6 @@ public class Event implements Serializable{
 
 	public void setDate(Date date) {
 		this.date = date;
-	}
-
-	public int getCount() {
-		return count;
-	}
-
-	public void setCount(int count) {
-		this.count = count;
 	}
 	
 	public int getSeats() {

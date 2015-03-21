@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import java.sql.Date;
 
+@SuppressWarnings("serial")
 public class Booking implements Serializable{
 
 	private Event event;

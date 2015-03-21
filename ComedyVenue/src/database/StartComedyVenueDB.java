@@ -25,8 +25,7 @@ public class StartComedyVenueDB {
 	               "description VARCHAR(500) NOT NULL, " +
 	               "minAge INTEGER NOT NULL, " +
 	               "date DATE NOT NULL, " +
-	               "seats INT NOT NULL, " +
-	               "folgenummer INTEGER  NOT NULL)";
+	               "seats INT NOT NULL)";
 	         System.out.println(sql);
 	         statement.executeUpdate(sql);
 	         //
