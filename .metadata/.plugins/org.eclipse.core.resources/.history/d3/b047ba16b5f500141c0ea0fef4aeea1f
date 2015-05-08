@@ -1,0 +1,69 @@
+package model;
+
+import java.io.Serializable;
+import java.sql.Date;
+
+@SuppressWarnings("serial")
+public class Booking implements Serializable{
+
+	private Event event;
+	private Date bookingTime;
+	private int numSeats;
+	private String customerName;
+	
+	/**
+	 * @param event
+	 * @param customer
+	 * @param bookingTime
+	 * @param number of seats
+	 */
+	public Booking(Event event,Date bookingTime, int numSeats, String customerName)
+	{
+		this.event=event;
+		this.customerName=customerName;
+		this.bookingTime=bookingTime;
+		this.numSeats=numSeats;
+	}
+
+	//GETTER & SETTER
+	//TODO CHECK VALUES	
+	public Event getEvent() {
+		return event;
+	}
+
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Date getBookingTime() {
+		return bookingTime;
+	}
+
+	public void setBookingTime(Date bookingTime) {
+		this.bookingTime = bookingTime;
+	}
+
+	public int getNumSeats() {
+		return numSeats;
+	}
+
+	public void setNumSeats(int numSeats) {
+		this.numSeats = numSeats;
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return event.toString() + " " + customer.toString();
+	}
+	
+	
+}

@@ -7,20 +7,21 @@ import java.sql.Date;
 public class Booking implements Serializable{
 
 	private Event event;
-	private Customer customer;
 	private Date bookingTime;
 	private int numSeats;
-	
+	private String customerName;
+
+
 	/**
 	 * @param event
 	 * @param customer
 	 * @param bookingTime
 	 * @param number of seats
 	 */
-	public Booking(Event event, Customer customer, Date bookingTime, int numSeats)
+	public Booking(Event event,Date bookingTime, int numSeats, String customerName)
 	{
 		this.event=event;
-		this.customer=customer;
+		this.customerName=customerName;
 		this.bookingTime=bookingTime;
 		this.numSeats=numSeats;
 	}
@@ -35,12 +36,13 @@ public class Booking implements Serializable{
 		this.event = event;
 	}
 
-	public Customer getCustomer() {
-		return customer;
+	
+	public String getCustomerName() {
+		return customerName;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
 	}
 
 	public Date getBookingTime() {
@@ -62,7 +64,7 @@ public class Booking implements Serializable{
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return event.toString() + " " + customer.toString();
+		return event.toString() + " " + customerName;
 	}
 	
 	

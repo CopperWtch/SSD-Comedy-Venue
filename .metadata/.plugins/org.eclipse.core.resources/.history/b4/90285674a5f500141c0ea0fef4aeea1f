@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Wed Mar 18 19:32:22 GMT 2015:
+Booten von Derby-Version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): Instanz a816c00e-014c-2e5f-55d8-000006fe3108
+für Datenbankverzeichnis C:\Users\Sarah\Desktop\UNI\Software Systems Development\workspace\SSD-Comedy-Venue\ComedyVenue\ComedyVenueDB mit Class Loader sun.misc.Launcher$AppClassLoader@c387f44
+Geladen aus file:/C:/Users/Sarah/Desktop/eclipse/db-derby-10.11.1.1-lib/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_40-b25
+user.dir=C:\Users\Sarah\Desktop\UNI\Software Systems Development\workspace\SSD-Comedy-Venue\ComedyVenue
+os.name=Windows 8.1
+os.arch=amd64
+os.version=6.3
+derby.system.home=null
+Datenbank-Class Loader wurde gestartet - derby.database.classpath=''

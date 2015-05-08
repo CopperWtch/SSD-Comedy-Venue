@@ -15,6 +15,18 @@ public class Event implements Serializable{
 	 private Date date;
 	 private int seats;
 	 private ArrayList<Comedian> comedians;
+	 
+	 protected int myAttribute;
+	 
+	 
+	 public void setMyAttribute(int myAttribute) {
+	 	this.myAttribute = myAttribute;
+	 }
+
+	 public int getMyAttribute() {
+	 	return this.myAttribute;
+	 }
+
 
 		/**
 		 * @param id

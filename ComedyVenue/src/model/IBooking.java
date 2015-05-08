@@ -8,7 +8,7 @@ public interface IBooking {
 	public ArrayList<Booking> getBookingsByEvent();
 	public ArrayList<Booking> getBookingsByCustomer();
 	
-	public void addBooking(Customer c, Event e, int numSeats);
+	public void addBooking(Event e, int numSeats, String customerName);
 	public void removeBooking(Booking b);
 	
 }

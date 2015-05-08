@@ -1,0 +1,176 @@
+package view;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Rectangle;
+
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
+
+import model.Comedian;
+import model.Event;
+
+import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+
+
+
+public class GUI_BoxOffice extends JFrame {
+
+	//GUI elements
+	private JPanel contentPane;
+	
+	//Top
+	private JPanel pnlTop;
+	
+		//LEFT
+	private JLabel lblEvents;
+	private JList<Event> lstEvents;
+	
+	
+		//RIGHT
+		private JPanel pnlEventDetails;
+		
+		private JLabel lblEventName;
+		private JLabel lblEventDate;
+		private JLabel lblEventDesc;
+		private JLabel lblEventSeats;
+		private JLabel lblEventAge;
+		private JButton btnBookings;
+		private JButton btnFeedback;
+	
+	//Bottom
+	private JPanel pnlBottom;
+	
+	//LEFT
+	private JLabel lblComedians;
+	private JList<Comedian> lstComedians;
+	
+	
+	//RIGHT
+	private JPanel pnlComedianDetails;
+	private JLabel lblComedianName;
+	private JLabel lblComedianDesc;
+
+
+	/**
+	 *
+	 * Create the frame.
+	 */
+	public GUI_BoxOffice() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1000, 700);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		
+		contentPane.setLayout(new BoxLayout(
+				contentPane, BoxLayout.X_AXIS ));
+		
+	
+		//LEFT
+		pnlTop = new JPanel();
+		pnlTop.setLayout(new BoxLayout(pnlTop, BoxLayout.X_AXIS));
+		
+		lblEvents = new JLabel("EVENTS");
+		
+		lstEvents =  new JList<Event>();
+		JScrollPane spEvents = new JScrollPane(lstEvents);
+		spEvents.setMaximumSize(new Dimension(500,600));
+		
+		lblComedians = new JLabel("COMEDIANS");
+		
+		lstComedians=  new JList<Comedian>();
+		JScrollPane spComedians = new JScrollPane(lstComedians);
+		spComedians.setMaximumSize(new Dimension(500,500));
+		
+		pnlLeft.add(lblEvents);
+		pnlLeft.add(spEvents);
+		pnlLeft.add(lblComedians);
+		pnlLeft.add(spComedians);
+		
+		//RIGHT
+		pnlRight = new JPanel();
+		pnlRight.setLayout(new BoxLayout(pnlRight, BoxLayout.Y_AXIS));
+		
+		//EVENTS
+		
+		pnlEventDetails = new JPanel();
+		pnlEventDetails.setBorder(BorderFactory.createTitledBorder("Event details"));
+		
+		lblEventName = new JLabel("NAME");
+		//lblEventName.setMaximumSize(new Dimension(400, 50));
+		lblEventDate = new JLabel("DATE");
+		//lblEventDate.setMaximumSize(new Dimension(400, 50));
+		lblEventDesc = new JLabel("DESCRIPTION");
+		//lblEventDesc.setMaximumSize(new Dimension(400, 200));
+		lblEventSeats = new JLabel("SEATS");
+		//lblEventSeats.setMaximumSize(new Dimension(400, 50));
+		lblEventAge = new JLabel("AGE");
+		//lblEventAge.setMaximumSize(new Dimension(400, 50));
+		
+		pnlEventDetails.setLayout(new BoxLayout(pnlEventDetails, BoxLayout.Y_AXIS));
+		pnlEventDetails.setMaximumSize(new Dimension(400,200));
+		pnlEventDetails.add(lblEventName);
+		pnlEventDetails.add(lblEventDate);
+		pnlEventDetails.add(lblEventDesc);
+		pnlEventDetails.add(lblEventSeats);
+		pnlEventDetails.add(lblEventAge);
+		
+		//COMEDIANS
+		pnlComedianDetails = new JPanel();
+		pnlComedianDetails.setBorder(BorderFactory.createTitledBorder("Comedian details"));
+
+		lblComedianName = new JLabel("COMEDIAN");
+		lblComedianDesc = new JLabel("COMEDIAN DESCRIPTION");
+		
+		pnlComedianDetails.setLayout(new BoxLayout(pnlComedianDetails, BoxLayout.Y_AXIS));
+
+		pnlComedianDetails.add(lblComedianName);
+		pnlComedianDetails.add(lblComedianDesc);
+		
+		
+		pnlRight.add(pnlEventDetails);
+		pnlRight.add(pnlComedianDetails);
+		
+		//add both sides to parent panel
+		contentPane.add(pnlLeft);
+		contentPane.add(pnlRight);
+		
+	}
+	
+// Add these some time	
+//    public void resetView(){
+//    }
+//
+//    public String getEingabe(){
+//    	return "";
+//    }
+//
+//    public void setErgebnis(String erg){
+//    }
+
+    /**
+     * Functions to add ActionListeners
+     * 
+     */
+    
+//    public void setBookingsListener(ActionListener l){
+//        this.btnBookings.addActionListener(l);
+//    }
+
+
+}

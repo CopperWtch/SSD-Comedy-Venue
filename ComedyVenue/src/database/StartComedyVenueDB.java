@@ -17,7 +17,20 @@ public class StartComedyVenueDB {
 	         System.out.println("Connecting to Database 'ComedyVenueDB' successful.");
 	         //
 	         Statement statement = connection.createStatement();
-	         //
+//	         //Delete all tables
+//	         String sql = "DROP TABLE Event";
+//		         System.out.println(sql);
+//		         statement.executeUpdate(sql);
+//		         sql = "DROP TABLE Comedian";
+//		         System.out.println(sql);
+//		         statement.executeUpdate(sql);
+//		         sql = "DROP TABLE CustomerBooking";
+//		         System.out.println(sql);
+//		         statement.executeUpdate(sql);
+//		         sql = "DROP TABLE ComedianBooking";
+//		         System.out.println(sql);
+//		         statement.executeUpdate(sql);
+	         //Events
 	         String sql = "CREATE TABLE Event (" +
 	               "id INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY, " +
 	               "name VARCHAR(100) NOT NULL, " +
@@ -28,14 +41,14 @@ public class StartComedyVenueDB {
 	               "seats INT NOT NULL)";
 	         System.out.println(sql);
 	         statement.executeUpdate(sql);
-	         //
-	         sql = "CREATE TABLE Customer (" +
-	               "id INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY, " +
-	               "name VARCHAR(100) NOT NULL, " +
-	               "email VARCHAR(30) NOT NULL, " +
-	               "phoneNr VARCHAR(20))";
-	         System.out.println(sql);
-	         statement.executeUpdate(sql);
+//	         //
+//	         sql = "CREATE TABLE Customer (" +
+//	               "id INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY, " +
+//	               "name VARCHAR(100) NOT NULL, " +
+//	               "email VARCHAR(30) NOT NULL, " +
+//	               "phoneNr VARCHAR(20))";
+//	         System.out.println(sql);
+//	         statement.executeUpdate(sql);
 	         //
 	         sql = "CREATE TABLE Comedian (" +
 		           "id INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY, " +
@@ -44,13 +57,13 @@ public class StartComedyVenueDB {
 		     System.out.println(sql);
 		     statement.executeUpdate(sql);
 		     
-		     //Relations
+		     //Bookings
 		     sql = "CREATE TABLE CustomerBooking (" +
 			       "eventId INTEGER NOT NULL, " +
-			       "customerId INTEGER NOT NULL, " +
+			       "bookingId INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY, " +
 			       "bookingTime DATE NOT NULL, " +
 			       "numberSeats INTEGER NOT NULL, " +
-			       "PRIMARY KEY(eventId,customerId))";
+			       "customerName VARCHAR(100) NOT NULL)";
 			 System.out.println(sql);
 			 statement.executeUpdate(sql);
 		     //    

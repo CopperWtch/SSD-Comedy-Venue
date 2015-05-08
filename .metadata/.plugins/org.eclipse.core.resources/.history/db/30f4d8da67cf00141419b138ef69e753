@@ -1,0 +1,56 @@
+package view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+import model.Booking;
+import model.Event;
+
+public class GUI_Bookings extends JFrame {
+
+	private JPanel contentPane;
+	
+	private JPanel pnlRight;
+	private JPanel pnlDetails;
+	private JPanel pnlButtons;
+
+	private JList<Booking> lstEvents;
+	
+	private JLabel lblBookingDate;
+	private JTextField txtName;
+	private JTextField txtNumSeats;
+	private JTextField txtPhoneNr;
+	private JTextField txtEmail;
+	
+	private JButton btnRemove;
+	private JButton btnSave;
+	private JButton btnClear;
+	private JButton btnReturn;
+	
+	
+	/**
+	 * Create the frame.
+	 */
+	public GUI_Bookings() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BoxLayout(
+				contentPane, BoxLayout.Y_AXIS ));
+		setContentPane(contentPane);
+		
+		pnlRight = new JPanel();
+		pnlRight.setLayout(new BoxLayout(pnlRight, BoxLayout.Y_AXIS));
+	}
+
+}
