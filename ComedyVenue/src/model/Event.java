@@ -117,6 +117,9 @@ public class Event implements Serializable{
 		this.comedians = comedians;
 	}
 
+	public void addComedian(Comedian comedian) {
+		this.comedians.add(comedian);
+	}
 
 	@Override
 	public String toString() {

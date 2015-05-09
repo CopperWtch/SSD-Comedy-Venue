@@ -75,27 +75,59 @@ public class StartComedyVenueDB {
 //			 statement.executeUpdate(sql);			     
 			     
 			 
-			 //ADD DATA
-			 String sql = "INSERT INTO Event (name,price,description,minAge,date,seats) VALUES(" +
-		               "'SecondEvent'," +
-		               "40," +
-		               "'This is the second event', " +
-		               "18, " +
-		               "'2017-10-23 10:10:10.0', " +
-		               "250)";
+//			 //ADD DATA
+//			 String sql = "INSERT INTO Event (name,price,description,minAge,date,seats) VALUES(" +
+//		               "'SecondEvent'," +
+//		               "40," +
+//		               "'This is the second event', " +
+//		               "18, " +
+//		               "'2017-10-23 10:10:10.0', " +
+//		               "250)";
+//		         System.out.println(sql);
+//		         statement.executeUpdate(sql);
+//		         sql = "INSERT INTO Event (name,price,description,minAge,date,seats) VALUES(" +
+//			               "'ThirdEvent'," +
+//			               "40," +
+//			               "'This is the third event', " +
+//			               "18, " +
+//			               "'2017-10-28 10:10:10.0', " +
+//			               "250)";
+//			         System.out.println(sql);
+//			         statement.executeUpdate(sql);
+	         
+	         String sql = "INSERT INTO Comedian (name,description) VALUES(" +
+		               "'Comedian One'," +
+		               "'This is a mediocre comedian!')";
 		         System.out.println(sql);
 		         statement.executeUpdate(sql);
-		         sql = "INSERT INTO Event (name,price,description,minAge,date,seats) VALUES(" +
-			               "'ThirdEvent'," +
-			               "40," +
-			               "'This is the third event', " +
-			               "18, " +
-			               "'2017-10-28 10:10:10.0', " +
-			               "250)";
-			         System.out.println(sql);
-			         statement.executeUpdate(sql);
+		         sql = "INSERT INTO Comedian (name,description) VALUES(" +
+			               "'Comedian Two'," +
+			               "'This is a mediocre comedian!')";
+			     System.out.println(sql);
+			     statement.executeUpdate(sql);
+			     sql = "INSERT INTO Comedian (name,description) VALUES(" +
+				               "'Comedian Three'," +
+				               "'This is a mediocre comedian!') ";
+				 System.out.println(sql);
+				 statement.executeUpdate(sql);
 				     
-			 
+			     sql = "INSERT INTO ComedianBooking (eventId,comedianId) VALUES(" +
+			               "1," +
+			               "1) ";
+			     System.out.println(sql);
+			     statement.executeUpdate(sql);
+			     sql = "INSERT INTO ComedianBooking (eventId,comedianId) VALUES(" +
+			               "2," +
+			               "2) ";
+			     System.out.println(sql);
+			     statement.executeUpdate(sql);
+			     sql = "INSERT INTO ComedianBooking (eventId,comedianId) VALUES(" +
+			               "2," +
+			               "3) ";
+			     System.out.println(sql);
+			     statement.executeUpdate(sql);
+			     
+				 
 	         statement.close();
 	         connection.close();
 	      }

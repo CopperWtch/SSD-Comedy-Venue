@@ -55,32 +55,47 @@ public class DBEvent implements IEventsList{
 					
 					ArrayList<Comedian> comedians = new ArrayList<Comedian>();
 					
-					sql = "SELECT comedianId FROM ComedianBooking WHERE eventId ="+id;
-					ResultSet comedianBookingResult = statement.executeQuery(sql);
-					while(comedianBookingResult.next())
-					{
-						//Get Comedian ID from ComedianBookings
-						int comedianId=comedianBookingResult.getInt("comedianId");
-						//Use comedian ID to get Comedian from Comedian						
-						sql = "SELECT * FROM Comedian WHERE id ="+comedianId;
-						ResultSet comedianResult = statement.executeQuery(sql);
-						
-						while(comedianResult.next())
-						{
-							//Get Comedian Data
-							String comedianName = comedianResult.getString("name");
-							String comedianDesc = comedianResult.getString("description");
-							
-							comedians.add(new Comedian(comedianId, comedianName, comedianDesc));
-
-						}
-						
-					}
-					
+//					sql = "SELECT comedianId FROM ComedianBooking WHERE eventId ="+id;
+//					ResultSet comedianBookingResult = statement.executeQuery(sql);
+//					while(comedianBookingResult.next())
+//					{
+//						//Get Comedian ID from ComedianBookings
+//						int comedianId=comedianBookingResult.getInt("comedianId");
+//						//Use comedian ID to get Comedian from Comedian						
+//						sql = "SELECT * FROM Comedian WHERE id ="+comedianId;
+//						ResultSet comedianResult = statement.executeQuery(sql);
+//						
+//						while(comedianResult.next())
+//						{
+//							//Get Comedian Data
+//							String comedianName = comedianResult.getString("name");
+//							String comedianDesc = comedianResult.getString("description");
+//							
+//							comedians.add(new Comedian(comedianId, comedianName, comedianDesc));
+//
+//						}
+//						
+//					}
+//					
 					Event event = new Event(id, name, price, description, minAge, date,  seats, comedians);
 					events.add(event);
 					
 				}
+				
+				sql = "SELECT * FROM Comedian join ComedianBooking on Comedian.id=ComedianBooking.comedianId";
+				result = statement.executeQuery(sql);
+
+				while(result.next())
+				{
+					int eventId = result.getInt("eventId");
+					int comedianId = result.getInt("comedianId");
+					String comedianName = result.getString("name");
+					String comedianDesc = result.getString("description");
+					
+					events.get(eventId-1).addComedian(new Comedian(comedianId,comedianName,comedianDesc));
+					
+				}
+				
 				
 				statement.close();
 				
@@ -89,6 +104,10 @@ public class DBEvent implements IEventsList{
 			{
 				e.printStackTrace();
 			}
+			
+			
+			
+			
 		}
 		return events;
 	}
