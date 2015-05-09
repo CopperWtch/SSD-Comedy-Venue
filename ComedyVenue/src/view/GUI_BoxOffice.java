@@ -1,12 +1,6 @@
 package view;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.Rectangle;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -15,17 +9,11 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.ListSelectionModel;
-import javax.swing.SwingConstants;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionListener;
 
 import model.Comedian;
 import model.Event;
-import model.IEventsList;
-
-import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
@@ -33,6 +21,10 @@ import java.util.ArrayList;
 
 public class GUI_BoxOffice extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8617657665399466269L;
 	//GUI elements
 	private JPanel contentPane;
 	private JLabel lblHead;

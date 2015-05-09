@@ -1,8 +1,6 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
@@ -18,9 +16,13 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import model.Booking;
-import model.Event;
 
 public class GUI_Bookings extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8346375180721960355L;
 
 	private JPanel contentPane;
 	

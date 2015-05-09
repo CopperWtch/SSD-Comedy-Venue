@@ -3,6 +3,10 @@ package model;
 import java.io.Serializable;
 public class Comedian implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8772439028021070723L;
 	private int id;
 	private String name;
 	private String desc;
