@@ -20,7 +20,7 @@ public class DBComedian implements IComedians{
 	
 	private Connection connection = null;
 	
-	private DBComedian()
+	public DBComedian()
 	{
 		try
 		{
@@ -35,7 +35,7 @@ public class DBComedian implements IComedians{
 	
 	@Override
 	public ArrayList<Comedian> getAllComedians() {
-		ArrayList<Comedian> customers = new ArrayList<Comedian>();
+		ArrayList<Comedian> comedians = new ArrayList<Comedian>();
 		if(connection!=null)
 		{
 			try
@@ -49,8 +49,8 @@ public class DBComedian implements IComedians{
 					String name = result.getString("name");
 					String desc = result.getString("desc");
 					
-					Comedian customer = new Comedian(id, name, desc);
-					customers.add(customer);
+					Comedian comedian = new Comedian(id, name, desc);
+					comedians.add(comedian);
 					
 				}
 				
@@ -62,7 +62,7 @@ public class DBComedian implements IComedians{
 				e.printStackTrace();
 			}
 		}
-		return customers;
+		return comedians;
 	}
 
 	@Override
@@ -102,6 +102,47 @@ public class DBComedian implements IComedians{
 			}
 		}
 		
+	}
+
+	@Override
+	public ArrayList<Comedian> getComedianForEvent(int EventId) {
+		ArrayList<Comedian> comedians = new ArrayList<Comedian>();
+		if(connection!=null)
+		{
+			try
+			{
+				String sql = "SELECT * FROM ComedianBooking WHERE eventId=" + EventId;
+				Statement statement = connection.createStatement();
+				ResultSet result = statement.executeQuery(sql);
+				while(result.next())
+				{
+					int id = result.getInt("comedianId");
+					
+					 sql = "SELECT * FROM Comedian WHERE id=" + id;
+					 statement = connection.createStatement();
+					 result = statement.executeQuery(sql);
+					 	while(result.next())
+						{
+							int comedianId = result.getInt("id");
+							String comedianName = result.getString("name");
+							String comedianDesc = result.getString("desc");
+							
+							Comedian comedian = new Comedian(comedianId, comedianName, comedianDesc);
+							comedians.add(comedian);
+							
+						}
+					
+				}
+				
+				statement.close();
+				
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return comedians;
 	}
 
 }

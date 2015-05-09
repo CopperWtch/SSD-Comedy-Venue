@@ -2,7 +2,15 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import model.Comedian;
+import model.DBComedian;
+import model.Event;
+import model.IComedians;
 import view.GUI_Bookings;
 import view.GUI_BoxOffice;
 
@@ -34,7 +42,12 @@ public class BoxOfficeController {
 		
 		this._viewMain.setBookingsListener(new BookingsListener());
 		this._viewMain.setFeedbackListener(new FeedbackListener());
-
+		this._viewMain.setBookingsSelectionListener(new EventsListener());
+		this._viewMain.setComediansSelectionListener(new ComediansListener());
+	}
+	
+	private void updateMainView(){
+		//TODO
 	}
 	
 	 /**
@@ -49,8 +62,12 @@ public class BoxOfficeController {
      * 
      * MAIN WINDOW
      */
+	
+	//Open popup for bookings
     class BookingsListener implements ActionListener{ 
     	GUI_Bookings _viewBookings;
+    	
+    
         public void actionPerformed(ActionEvent e) {
           //get values from view: value = (_view.getWhatever())
         	// get Event Data from view = _view.getSelectedEvent()
@@ -71,6 +88,7 @@ public class BoxOfficeController {
 		}
     }
     
+    //Open window for feedback
     class FeedbackListener implements ActionListener{
         public void actionPerformed(ActionEvent e) {
           //get values from view: value = (_view.getWhatever())
@@ -79,6 +97,39 @@ public class BoxOfficeController {
         }
     }
     
+    //Click on Event in the list
+    class EventsListener implements ListSelectionListener{
+		@Override
+		public void valueChanged(ListSelectionEvent arg0) {
+			
+			//get selected value
+			if(_viewMain.getLstEvents().getSelectedValue()!= null)
+			{
+				//get selected value
+				Event selectedEvent = _viewMain.getLstEvents().getSelectedValue();
+			
+				//get associated comedians
+				IComedians comedians = new DBComedian();
+				
+				//update data in the view
+				_viewMain.setComedians(comedians.getComedianForEvent(selectedEvent.getId()));
+				_viewMain.updateEvendData(selectedEvent);
+			}
+		}
+    }
+    
+    class ComediansListener implements ListSelectionListener{
+		@Override
+		public void valueChanged(ListSelectionEvent arg0) {
+			
+			//get selected value
+			if(_viewMain.getLstComedians().getSelectedValue()!= null)
+			{
+				_viewMain.updateComedianData(_viewMain.getLstComedians().getSelectedValue());
+			}
+			
+		}
+    }
     
 	/**
 	 * Bookings Popup

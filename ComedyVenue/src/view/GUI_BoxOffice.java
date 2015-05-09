@@ -19,12 +19,15 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionListener;
 
 import model.Comedian;
 import model.Event;
+import model.IEventsList;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 
 
@@ -40,8 +43,7 @@ public class GUI_BoxOffice extends JFrame {
 		//LEFT
 	private JLabel lblEvents;
 	private JList<Event> lstEvents;
-	
-	
+
 		//RIGHT
 		private JPanel pnlEventDetails;
 		private JPanel pnlButtons;
@@ -91,6 +93,7 @@ public class GUI_BoxOffice extends JFrame {
 		pnlTop.setLayout(new BoxLayout(pnlTop, BoxLayout.X_AXIS));
 		
 		//lblEvents = new JLabel("EVENTS");
+		
 		
 		lstEvents =  new JList<Event>();
 		JScrollPane spEvents = new JScrollPane(lstEvents);
@@ -164,10 +167,7 @@ public class GUI_BoxOffice extends JFrame {
 		pnlComedianDetails.add(lblComedianName);
 		pnlComedianDetails.add(lblComedianDesc);
 		
-		//COMEDIANS
-		
-		
-		
+		//COMEDIANS	
 		pnlBottom.add(spComedians);
 		pnlBottom.add(pnlComedianDetails);
 		
@@ -190,10 +190,10 @@ public class GUI_BoxOffice extends JFrame {
 //    }
 
     /**
-     * Functions to add ActionListeners
+     * Functions to add Listeners
      * 
      */
-    
+   
     public void setBookingsListener(ActionListener l){
         this.btnBookings.addActionListener(l);
     }
@@ -201,6 +201,73 @@ public class GUI_BoxOffice extends JFrame {
     public void setFeedbackListener(ActionListener l){
         this.btnFeedback.addActionListener(l);
     }
+    
+    public void setBookingsSelectionListener(ListSelectionListener l)
+    {
+    	this.lstEvents.addListSelectionListener(l);
+    }
+    
+    public void setComediansSelectionListener(ListSelectionListener l)
+    {
+    	this.lstComedians.addListSelectionListener(l);
+    }
+    
+    public void setEvents(ArrayList<Event> e){
+    	
+    	if(e != null)
+    	{
+    		lstEvents.setListData(e.toArray(new Event[0]));
+    	}
+    	
+    }
+    
+    public void updateEvendData(Event e){
+    	
+    	if(e != null)
+    	{
+    		lblEventName.setText(e.getName());
+    		lblEventDate.setText(e.getDate().toString());
+    		lblEventDesc.setText(e.getDesc());
+    		lblEventSeats.setText(Integer.toString(e.getSeats()));
+    		lblEventAge.setText(Integer.toString(e.getMinAge()));
+    	}
+    	
+    }
+    
+    public void setComedians(ArrayList<Comedian> c){
+    	
+    	if(c != null)
+    	{
+    		//update Comedian List
+    		lstComedians.setListData(c.toArray(new Comedian[0]));
+    	}
+    }
+    
+    public void updateComedianData(Comedian c){
+    	
+    	if(c != null)
+    	{
+    		lblComedianName.setText(c.getName());
+    		lblComedianDesc.setText(c.getDesc());
+    	}
+    	
+    }
+    
+    //GETTERS  SETTERS
+	public JList<Event> getLstEvents() {
+	return lstEvents;
+}
 
+public void setLstEvents(JList<Event> lstEvents) {
+	this.lstEvents = lstEvents;
+}
+
+public JList<Comedian> getLstComedians() {
+	return lstComedians;
+}
+
+public void setLstComedians(JList<Comedian> lstComedians) {
+	this.lstComedians = lstComedians;
+}
 
 }
