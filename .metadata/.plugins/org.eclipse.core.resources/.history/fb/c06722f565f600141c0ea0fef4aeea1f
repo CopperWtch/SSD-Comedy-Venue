@@ -1,0 +1,97 @@
+package database;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+public class StartComedyVenueDB {
+	public static void main(String[] args)
+	   {
+	      try
+	      {
+	         Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+	         System.out.println("Treiberklasse wurde geladen.");
+	         //
+	         String url = "jdbc:derby:ComedyVenueDB;create=true";
+	         Connection connection = DriverManager.getConnection(url);
+	         System.out.println("Connecting to Database 'ComedyVenueDB' successful.");
+	         //
+	         Statement statement = connection.createStatement();
+////	         //Delete all tables
+////	         String sql = "DROP TABLE Event";
+////		         System.out.println(sql);
+////		         statement.executeUpdate(sql);
+////		         sql = "DROP TABLE Comedian";
+////		         System.out.println(sql);
+////		         statement.executeUpdate(sql);
+////		         sql = "DROP TABLE CustomerBooking";
+////		         System.out.println(sql);
+////		         statement.executeUpdate(sql);
+////		         sql = "DROP TABLE ComedianBooking";
+////		         System.out.println(sql);
+////		         statement.executeUpdate(sql);
+//	         //Events
+//	         String sql = "CREATE TABLE Event (" +
+//	               "id INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY, " +
+//	               "name VARCHAR(100) NOT NULL, " +
+//	               "price DECIMAL NOT NULL, " +
+//	               "description VARCHAR(500) NOT NULL, " +
+//	               "minAge INTEGER NOT NULL, " +
+//	               "date DATE NOT NULL, " +
+//	               "seats INT NOT NULL)";
+//	         System.out.println(sql);
+//	         statement.executeUpdate(sql);
+////	         //
+////	         sql = "CREATE TABLE Customer (" +
+////	               "id INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY, " +
+////	               "name VARCHAR(100) NOT NULL, " +
+////	               "email VARCHAR(30) NOT NULL, " +
+////	               "phoneNr VARCHAR(20))";
+////	         System.out.println(sql);
+////	         statement.executeUpdate(sql);
+//	         //
+//	         sql = "CREATE TABLE Comedian (" +
+//		           "id INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY, " +
+//		           "name VARCHAR(100) NOT NULL, " +
+//		           "description VARCHAR(500))";
+//		     System.out.println(sql);
+//		     statement.executeUpdate(sql);
+//		     
+//		     //Bookings
+//		     sql = "CREATE TABLE CustomerBooking (" +
+//			       "eventId INTEGER NOT NULL, " +
+//			       "bookingId INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY, " +
+//			       "bookingTime DATE NOT NULL, " +
+//			       "numberSeats INTEGER NOT NULL, " +
+//			       "customerName VARCHAR(100) NOT NULL)";
+//			 System.out.println(sql);
+//			 statement.executeUpdate(sql);
+//		     //    
+//		     sql = "CREATE TABLE ComedianBooking (" +
+//		    	   "eventId INTEGER NOT NULL, " +
+//				   "comedianId INTEGER NOT NULL, " +
+//			       "PRIMARY KEY(eventId,comedianId))";
+//			 System.out.println(sql);
+//			 statement.executeUpdate(sql);			     
+			     
+			 
+			 //ADD DATA
+			 String sql = "INSERT INTO Event (name,price,description,minAge,date,seats) VALUES(" +
+		               "'FirstEvent'," +
+		               "22," +
+		               "'This is the first event', " +
+		               "12, " +
+		               "''31-AUG-16'', " +
+		               "200)";
+		         System.out.println(sql);
+		         statement.executeUpdate(sql);
+			 
+	         statement.close();
+	         connection.close();
+	      }
+	      catch(Exception e)
+	      {
+	         e.printStackTrace();
+	      }
+	   }
+}
