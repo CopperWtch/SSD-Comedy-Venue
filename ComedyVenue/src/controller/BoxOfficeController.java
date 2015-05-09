@@ -2,15 +2,15 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import model.Comedian;
 import model.DBComedian;
+import model.DBEvent;
 import model.Event;
 import model.IComedians;
+import model.IEventsList;
 import view.GUI_Bookings;
 import view.GUI_BoxOffice;
 
@@ -26,6 +26,7 @@ public class BoxOfficeController {
 		this._viewMain = new GUI_BoxOffice();
 		
 		addMainListener();
+		loadEvents();
 	}
 	
 	public void showView(){
@@ -46,8 +47,11 @@ public class BoxOfficeController {
 		this._viewMain.setComediansSelectionListener(new ComediansListener());
 	}
 	
-	private void updateMainView(){
-		//TODO
+	private void loadEvents(){
+		
+		IEventsList events = new DBEvent();
+		
+		this._viewMain.setEvents(events.getAllEvents());
 	}
 	
 	 /**
@@ -78,6 +82,7 @@ public class BoxOfficeController {
         	addBookingsListener();
         }
         
+        //Add Listeners to new window
 		private void addBookingsListener() {
 			
 			this._viewBookings.setSaveListener(new SaveListener());
@@ -91,9 +96,7 @@ public class BoxOfficeController {
     //Open window for feedback
     class FeedbackListener implements ActionListener{
         public void actionPerformed(ActionEvent e) {
-          //get values from view: value = (_view.getWhatever())
-          //use values to perform the needed action (_model.DoWhatever(value))
-          //update view _view.setWhatever(....)
+          //TODO
         }
     }
     

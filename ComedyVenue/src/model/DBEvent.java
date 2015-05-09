@@ -20,7 +20,7 @@ public class DBEvent implements IEventsList{
 	
 	private Connection connection = null;
 	
-	private DBEvent()
+	public DBEvent()
 	{
 		try
 		{
