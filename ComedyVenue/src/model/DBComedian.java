@@ -104,45 +104,5 @@ public class DBComedian implements IComedians{
 		
 	}
 
-	@Override
-	public ArrayList<Comedian> getComedianForEvent(int EventId) {
-		ArrayList<Comedian> comedians = new ArrayList<Comedian>();
-		if(connection!=null)
-		{
-			try
-			{
-				String sql = "SELECT * FROM ComedianBooking WHERE eventId=" + EventId;
-				Statement statement = connection.createStatement();
-				ResultSet result = statement.executeQuery(sql);
-				while(result.next())
-				{
-					int id = result.getInt("comedianId");
-					
-					 sql = "SELECT * FROM Comedian WHERE id=" + id;
-					 statement = connection.createStatement();
-					 result = statement.executeQuery(sql);
-					 	while(result.next())
-						{
-							int comedianId = result.getInt("id");
-							String comedianName = result.getString("name");
-							String comedianDesc = result.getString("desc");
-							
-							Comedian comedian = new Comedian(comedianId, comedianName, comedianDesc);
-							comedians.add(comedian);
-							
-						}
-					
-				}
-				
-				statement.close();
-				
-			}
-			catch(Exception e)
-			{
-				e.printStackTrace();
-			}
-		}
-		return comedians;
-	}
 
 }

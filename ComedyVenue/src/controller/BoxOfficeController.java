@@ -115,7 +115,7 @@ public class BoxOfficeController {
 				IComedians comedians = new DBComedian();
 				
 				//update data in the view
-				_viewMain.setComedians(comedians.getComedianForEvent(selectedEvent.getId()));
+				_viewMain.setComedians(selectedEvent.getComedians());
 				_viewMain.updateEvendData(selectedEvent);
 			}
 		}
