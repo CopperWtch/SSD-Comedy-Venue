@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class DBEvent implements IEventsList{
@@ -50,33 +51,11 @@ public class DBEvent implements IEventsList{
 					int price = result.getInt("price");
 					String description = result.getString("description");
 					int minAge = result.getInt("minAge");
-					Date date = result.getDate("date");
+					Timestamp date = result.getTimestamp("date");
 					int seats = result.getInt("seats");
 					
 					ArrayList<Comedian> comedians = new ArrayList<Comedian>();
-					
-//					sql = "SELECT comedianId FROM ComedianBooking WHERE eventId ="+id;
-//					ResultSet comedianBookingResult = statement.executeQuery(sql);
-//					while(comedianBookingResult.next())
-//					{
-//						//Get Comedian ID from ComedianBookings
-//						int comedianId=comedianBookingResult.getInt("comedianId");
-//						//Use comedian ID to get Comedian from Comedian						
-//						sql = "SELECT * FROM Comedian WHERE id ="+comedianId;
-//						ResultSet comedianResult = statement.executeQuery(sql);
-//						
-//						while(comedianResult.next())
-//						{
-//							//Get Comedian Data
-//							String comedianName = comedianResult.getString("name");
-//							String comedianDesc = comedianResult.getString("description");
-//							
-//							comedians.add(new Comedian(comedianId, comedianName, comedianDesc));
-//
-//						}
-//						
-//					}
-//					
+				
 					Event event = new Event(id, name, price, description, minAge, date,  seats, comedians);
 					events.add(event);
 					
@@ -113,8 +92,27 @@ public class DBEvent implements IEventsList{
 	}
 
 	@Override
-	public void addEvent(Event e) {
-		// TODO Auto-generated method stub
+	public void addEvent(Event event) {
+		if(connection!=null)
+		{
+			try
+			{
+				String sql = "INSERT INTO Event(name, prize,description,minAge,date,seats) VALUES ('" 
+			+ event.getName()+"', '" 
+			+ event.getPrice()+"', '"
+			+ event.getDesc()+"', '"
+			+ event.getMinAge()+"', '"
+			+ event.getDate()+"', '"
+			+ event.getSeats()+"')";
+				Statement statement = connection.createStatement();
+				statement.executeUpdate(sql);
+				statement.close();
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
 		
 	}
 
@@ -125,8 +123,22 @@ public class DBEvent implements IEventsList{
 	}
 
 	@Override
-	public void removeEvent(Event e) {
-		// TODO Auto-generated method stub
+	public void removeEvent(Event event) {
+		
+		{
+			try
+			{
+				String sql = "DELETE FROM Event " +
+							"WHERE id = "+ event.getId();
+				Statement statement = connection.createStatement();
+				statement.executeUpdate(sql);
+				statement.close();
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
 		
 	}
 

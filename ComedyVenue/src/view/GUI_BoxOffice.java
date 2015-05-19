@@ -1,6 +1,7 @@
 package view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -14,7 +15,9 @@ import javax.swing.event.ListSelectionListener;
 
 import model.Comedian;
 import model.Event;
+
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 
@@ -25,6 +28,9 @@ public class GUI_BoxOffice extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = -8617657665399466269L;
+	
+	SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+	
 	//GUI elements
 	private JPanel contentPane;
 	private JLabel lblHead;
@@ -101,10 +107,19 @@ public class GUI_BoxOffice extends JFrame {
 		pnlEventDetails.setMaximumSize(new Dimension(500,600));
 		
 		lblEventName = new JLabel("NAME");
+		lblEventName.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 10));
+		
 		lblEventDate = new JLabel("DATE");
+		lblEventDate.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 10));
+		
 		lblEventDesc = new JLabel("DESCRIPTION");
+		lblEventDesc.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 10));
+		
 		lblEventSeats = new JLabel("SEATS");
+		lblEventSeats.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 10));
+		
 		lblEventAge = new JLabel("AGE");
+		lblEventAge.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 10));
 		
 		pnlButtons = new JPanel();
 		pnlButtons.setLayout(new BoxLayout(pnlButtons, BoxLayout.X_AXIS));
@@ -152,7 +167,10 @@ public class GUI_BoxOffice extends JFrame {
 		pnlComedianDetails.setMaximumSize(new Dimension(500,200));
 		
 		lblComedianName = new JLabel("COMEDIAN");
+		lblComedianName.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 10));
+		
 		lblComedianDesc = new JLabel("DESCRIPTION");
+		lblComedianDesc.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 10));
 		
 		
 
@@ -164,22 +182,10 @@ public class GUI_BoxOffice extends JFrame {
 		pnlBottom.add(pnlComedianDetails);
 		
 		//add both sides to parent panel
-		//contentPane.add(lblHead);
 		contentPane.add(pnlTop);
 		contentPane.add(pnlBottom);
 		
 	}
-	
-// Add these some time	
-//    public void resetView(){
-//    }
-//
-//    public String getEingabe(){
-//    	return "";
-//    }
-//
-//    public void setErgebnis(String erg){
-//    }
 
     /**
      * Functions to add Listeners
@@ -218,10 +224,10 @@ public class GUI_BoxOffice extends JFrame {
     	if(e != null)
     	{
     		lblEventName.setText(e.getName());
-    		lblEventDate.setText(e.getDate().toString());
+    		lblEventDate.setText(dateFormat.format(e.getDate()));
     		lblEventDesc.setText(e.getDesc());
-    		lblEventSeats.setText(Integer.toString(e.getSeats()));
-    		lblEventAge.setText(Integer.toString(e.getMinAge()));
+    		lblEventSeats.setText(Integer.toString(e.getSeats())+ " total seats.");
+    		lblEventAge.setText("Ages "+Integer.toString(e.getMinAge())+ " and up.");
     	}
     	
     }
@@ -262,4 +268,16 @@ public void setLstComedians(JList<Comedian> lstComedians) {
 	this.lstComedians = lstComedians;
 }
 
+public void setBtnBookingsEnabled(boolean b)
+{
+	btnBookings.setEnabled(b);
 }
+
+public void setBtnFeedbackEnabled(boolean b)
+{
+	btnFeedback.setEnabled(b);
+}
+
+
+}
+

@@ -1,13 +1,14 @@
 package model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 @SuppressWarnings("serial")
 public class Booking implements Serializable{
 
+	private int id;
 	private Event event;
-	private Date bookingTime;
+	private Timestamp bookingTime;
 	private int numSeats;
 	private String customerName;
 
@@ -18,12 +19,21 @@ public class Booking implements Serializable{
 	 * @param bookingTime
 	 * @param number of seats
 	 */
-	public Booking(Event event,Date bookingTime, int numSeats, String customerName)
+	public Booking(int id, Event event,Timestamp bookingTime, int numSeats, String customerName)
 	{
+		this.id=id;
 		this.event=event;
 		this.customerName=customerName;
 		this.bookingTime=bookingTime;
 		this.numSeats=numSeats;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	//GETTER & SETTER
@@ -45,11 +55,11 @@ public class Booking implements Serializable{
 		this.customerName = customerName;
 	}
 
-	public Date getBookingTime() {
+	public Timestamp getBookingTime() {
 		return bookingTime;
 	}
 
-	public void setBookingTime(Date bookingTime) {
+	public void setBookingTime(Timestamp bookingTime) {
 		this.bookingTime = bookingTime;
 	}
 

@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 @SuppressWarnings("serial")
@@ -12,7 +13,7 @@ public class Event implements Serializable{
 	 private float price;
 	 private String desc;
 	 private int minAge;
-	 private Date date;
+	 private Timestamp date;
 	 private int seats;
 	 private ArrayList<Comedian> comedians;
 	 
@@ -37,7 +38,7 @@ public class Event implements Serializable{
 		 * @param date
 		 * @param comedians
 		 */
-	public Event(int id, String name, float price, String desc, int minAge, Date date, int seats, ArrayList<Comedian> comedians)
+	public Event(int id, String name, float price, String desc, int minAge, Timestamp date, int seats, ArrayList<Comedian> comedians)
 	 {
 		 super();
 		 this.id = id;
@@ -93,11 +94,11 @@ public class Event implements Serializable{
 		this.minAge = minAge;
 	}
 
-	public Date getDate() {
+	public Timestamp getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 	

@@ -1,6 +1,13 @@
 ----------------------------------------------------------------
-2015-05-09 18:55:03.743 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance a816c00e-014d-3a07-dda2-000006d51078
-on database directory C:\Users\Sarah\Desktop\UNI\Software Systems Development\workspace\SSD-Comedy-Venue\ComedyVenue\ComedyVenueDB  
-
+Tue May 19 23:45:28 BST 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance a816c00e-014d-6e5a-697e-000006cb1040 
+on database directory C:\Users\Sarah\Desktop\UNI\Software Systems Development\workspace\SSD-Comedy-Venue\ComedyVenue\ComedyVenueDB with class loader sun.misc.Launcher$AppClassLoader@c387f44 
+Loaded from file:/C:/Users/Sarah/Desktop/UNI/Software%20Systems%20Development/workspace/SSD-Comedy-Venue/ComedyVenue/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_45-b15
+user.dir=C:\Users\Sarah\Desktop\UNI\Software Systems Development\workspace\SSD-Comedy-Venue\ComedyVenue
+os.name=Windows 8.1
+os.arch=amd64
+os.version=6.3
+derby.system.home=null
 Database Class Loader started - derby.database.classpath=''

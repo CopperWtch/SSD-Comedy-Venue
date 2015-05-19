@@ -73,7 +73,7 @@ public class DBComedian implements IComedians{
 			{
 				String sql = "INSERT INTO Comedian(name, desc) VALUES ('" + c.getName()+"', '" + c.getDesc()+"')";
 				Statement statement = connection.createStatement();
-				statement.executeQuery(sql);
+				statement.executeUpdate(sql);
 				statement.close();
 			}
 			catch(Exception e)
@@ -93,7 +93,7 @@ public class DBComedian implements IComedians{
 				String sql = "DELETE FROM Comedian " +
 							"WHERE id = "+ c.getId();
 				Statement statement = connection.createStatement();
-				statement.executeQuery(sql);
+				statement.executeUpdate(sql);
 				statement.close();
 			}
 			catch(Exception e)
