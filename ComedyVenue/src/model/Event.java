@@ -5,9 +5,17 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+/**
+ * Event 
+ * This class describes the object type 'Event'.
+ * 
+ * @author Sarah Bulk
+ * @version 1.0
+ * @since 19.05.2015
+ */
 @SuppressWarnings("serial")
 public class Event implements Serializable{
-//TODO
+
 	 private int id;
 	 private String name;
 	 private float price;
@@ -16,27 +24,27 @@ public class Event implements Serializable{
 	 private Timestamp date;
 	 private int seats;
 	 private ArrayList<Comedian> comedians;
-	 
-	 protected int myAttribute;
-	 
-	 
-	 public void setMyAttribute(int myAttribute) {
-	 	this.myAttribute = myAttribute;
-	 }
-
-	 public int getMyAttribute() {
-	 	return this.myAttribute;
-	 }
 
 
 		/**
+		 * The constructor to create an object
+		 * 
 		 * @param id
+		 *            The ID of the event
 		 * @param name
+		 *            The name of the event
 		 * @param price
+		 *            The price of a ticket for this event
 		 * @param desc
+		 *            A description of the event
 		 * @param minAge
+		 *            Age restriction of the event
 		 * @param date
+		 *            The date it takes place
+		 * @param seats
+		 *            The amount of available seats
 		 * @param comedians
+		 *            A list of the comedians performing at this event
 		 */
 	public Event(int id, String name, float price, String desc, int minAge, Timestamp date, int seats, ArrayList<Comedian> comedians)
 	 {
@@ -51,9 +59,10 @@ public class Event implements Serializable{
 		 this.comedians=comedians;
 	 }
 
-	
-	//GETTER & SETTER
-	//TODO CHECK VALUES
+	/**
+	 * 
+	 * Data accessor methods
+	 */
 	public int getId() {
 		return id;
 	}
@@ -122,6 +131,11 @@ public class Event implements Serializable{
 		this.comedians.add(comedian);
 	}
 
+	/**
+	 * A method to generate a String representing the most important data.
+	 * 
+	 * @return A String object containing the data.
+	 */
 	@Override
 	public String toString() {
 		

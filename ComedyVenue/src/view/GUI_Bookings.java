@@ -22,13 +22,24 @@ import javax.swing.event.ListSelectionListener;
 import model.Booking;
 import model.Event;
 
+/**
+ * GUI_Bookings This class represents the view for the bookings. It contains a
+ * JList with all the bookings for an event and text fields and labels for the
+ * details of a booking.
+ * 
+ * @author Sarah Bulk
+ * @version 1.0
+ * @since 19.05.2015
+ */
 public class GUI_Bookings extends JFrame {
 
 	/**
-	 * 
+	 * declatations
 	 */
+
 	private static final long serialVersionUID = -8346375180721960355L;
-	
+
+	// date format to display the dates
 	SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
 	private JPanel contentPane;
@@ -51,7 +62,7 @@ public class GUI_Bookings extends JFrame {
 	private JButton btnReturn;
 
 	/**
-	 * Create the frame.
+	 * This method is used to create the frame.
 	 */
 	public GUI_Bookings() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -64,7 +75,7 @@ public class GUI_Bookings extends JFrame {
 		lstBookings = new JList<Booking>();
 		JScrollPane spBookings = new JScrollPane(lstBookings);
 		spBookings.setMaximumSize(new Dimension(200, 600));
-		spBookings.setMinimumSize(new Dimension(200,100));
+		spBookings.setMinimumSize(new Dimension(200, 100));
 		spBookings.setBorder(BorderFactory
 				.createTitledBorder("Bookings for this Event"));
 
@@ -95,7 +106,7 @@ public class GUI_Bookings extends JFrame {
 		btnSave = new JButton("Save");
 		btnClear = new JButton("Clear");
 		btnReturn = new JButton("Return");
-		
+
 		lblErrorText = new JLabel("ERROR?");
 
 		pnlButtons.add(btnRemove);
@@ -110,6 +121,53 @@ public class GUI_Bookings extends JFrame {
 		contentPane.add(spBookings);
 		contentPane.add(pnlRight);
 	}
+
+	/**
+	 * Update the details of an booking displayed on the right side of the frame
+	 * 
+	 * @param b
+	 *            the booking of which the data is used for display
+	 */
+	public void setData(Booking b) {
+		// Sets Booking details to the selected booking
+		lblEventName.setText(b.getEvent().getName());
+		lblBookingTime.setText(dateFormat.format(b.getBookingTime()));
+		txtName.setText(b.getCustomerName());
+		txtNumSeats.setText(Integer.toString(b.getNumSeats()));
+	}
+
+	/**
+	 * empty the text fields
+	 */
+	public void clearView() {
+		lblBookingTime.setText("");
+		txtName.setText("");
+		txtNumSeats.setText("");
+	}
+
+	/**
+	 * enable/disable the 'save' button
+	 * 
+	 * @param b
+	 *            the new boolean value
+	 */
+	public void SetBtnSaveEnabled(boolean b) {
+		btnSave.setEnabled(b);
+	}
+
+	/**
+	 * enable/disable the 'remove' button
+	 * 
+	 * @param b
+	 *            the new boolean value
+	 */
+	public void setBtnRemoveEnabled(boolean b) {
+		btnRemove.setEnabled(b);
+	}
+
+	/**
+	 * Data Accessor Methods
+	 */
 
 	public void setSaveListener(ActionListener l) {
 		this.btnSave.addActionListener(l);
@@ -126,11 +184,10 @@ public class GUI_Bookings extends JFrame {
 	public void setReturnListener(ActionListener l) {
 		this.btnReturn.addActionListener(l);
 	}
-	
-    public void setCustomerBookingsListener(ListSelectionListener l)
-    {
-    	this.lstBookings.addListSelectionListener(l);
-    }
+
+	public void setCustomerBookingsListener(ListSelectionListener l) {
+		this.lstBookings.addListSelectionListener(l);
+	}
 
 	public void setBookings(ArrayList<Booking> b) {
 
@@ -148,7 +205,6 @@ public class GUI_Bookings extends JFrame {
 		this.lstBookings = lstBookings;
 	}
 
-
 	public String getName() {
 
 		return txtName.getText();
@@ -158,41 +214,14 @@ public class GUI_Bookings extends JFrame {
 
 		try {
 			// if is number
-		    int output = Integer.parseInt(txtNumSeats.getText());
-		    return output;
+			int output = Integer.parseInt(txtNumSeats.getText());
+			return output;
 		} catch (NumberFormatException e) {
 			return 0;
 		}
 	}
-	
-	public void setData(Booking b)
-	{
-		//Sets Booking details to the selected booking
-		lblEventName.setText(b.getEvent().getName());
-		lblBookingTime.setText(dateFormat.format(b.getBookingTime()));
-		txtName.setText(b.getCustomerName());
-		txtNumSeats.setText(Integer.toString(b.getNumSeats()));
-	}
-	
-	public void clearView()
-	{
-		lblBookingTime.setText("");
-		txtName.setText("");
-		txtNumSeats.setText("");
-	}
-	
-	public void SetBtnSaveEnabled(boolean b)
-	{
-		btnSave.setEnabled(b);
-	}
 
-	public void setBtnRemoveEnabled(boolean b)
-	{
-		btnRemove.setEnabled(b);
-	}
-	
-	public void setErrorText(String s)
-	{
+	public void setErrorText(String s) {
 		lblErrorText.setText(s);
 	}
 }

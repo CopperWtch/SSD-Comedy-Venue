@@ -1,20 +1,31 @@
 package model;
 
 import java.io.Serializable;
+
+/**
+ * Comedian
+ * This class describes the object type 'Comedian'.
+ * 
+ * @author Sarah Bulk
+ * @version 1.0
+ * @since 19.05.2015
+ */
 public class Comedian implements Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8772439028021070723L;
 	private int id;
 	private String name;
 	private String desc;
 	
 	/**
+	 * The constructor to create an object
+	 * 
 	 * @param id
+	 *            The ID of the comedian
 	 * @param name
+	 *            The comedian's name
 	 * @param desc
+	 *            A description of the comedian
 	 */
 	public Comedian(int id, String name, String desc)
 	{
@@ -24,8 +35,10 @@ public class Comedian implements Serializable{
 		this.desc = desc;
 	}
 
-	//GETTER & SETTER
-	//TODO CHECK VALUES
+	/**
+	 * 
+	 * Data accessor methods
+	 */
 	public int getId() {
 		return id;
 	}
@@ -50,9 +63,13 @@ public class Comedian implements Serializable{
 		this.desc = desc;
 	}
 
+	/**
+	 * A method to generate a String representing the most important data.
+	 * 
+	 * @return A String object containing the data.
+	 */
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return name +": "+ desc;
 	}
 

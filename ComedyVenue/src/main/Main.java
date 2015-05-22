@@ -5,6 +5,17 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import controller.BoxOfficeController;
 
+/**
+ * Main
+ * The main class responsible for launching
+ * the application. 
+ * This class creates the controller and uses it to 
+ * show the UI
+ * 
+ * @author Sarah Bulk
+ * @version 1.0
+ * @since 19.05.2015
+ */
 public class Main {
 	/**
 	 * Launch the application.

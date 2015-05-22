@@ -3,8 +3,14 @@ package model;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+/**
+ * Booking 
+ * This class describes the object type 'Booking'.
+ * 
+ * @author Sarah Bulk
+ */
 @SuppressWarnings("serial")
-public class Booking implements Serializable{
+public class Booking implements Serializable {
 
 	private int id;
 	private Event event;
@@ -12,21 +18,33 @@ public class Booking implements Serializable{
 	private int numSeats;
 	private String customerName;
 
+	/**
+	 * The constructor to create an object
+	 * 
+	 * @param id
+	 *            The ID of the booking
+	 * @param event
+	 *            The associated Event
+	 * @param bookingTime
+	 *            The time the booking was made
+	 * @param numSeats
+	 *            The amount of seats that were booked for this booking
+	 * @param customerName
+	 *            The name of the customer
+	 */
+	public Booking(int id, Event event, Timestamp bookingTime, int numSeats,
+			String customerName) {
+		this.id = id;
+		this.event = event;
+		this.customerName = customerName;
+		this.bookingTime = bookingTime;
+		this.numSeats = numSeats;
+	}
 
 	/**
-	 * @param event
-	 * @param customer
-	 * @param bookingTime
-	 * @param number of seats
+	 * 
+	 * Data accessor methods
 	 */
-	public Booking(int id, Event event,Timestamp bookingTime, int numSeats, String customerName)
-	{
-		this.id=id;
-		this.event=event;
-		this.customerName=customerName;
-		this.bookingTime=bookingTime;
-		this.numSeats=numSeats;
-	}
 
 	public int getId() {
 		return id;
@@ -36,8 +54,6 @@ public class Booking implements Serializable{
 		this.id = id;
 	}
 
-	//GETTER & SETTER
-	//TODO CHECK VALUES	
 	public Event getEvent() {
 		return event;
 	}
@@ -46,7 +62,6 @@ public class Booking implements Serializable{
 		this.event = event;
 	}
 
-	
 	public String getCustomerName() {
 		return customerName;
 	}
@@ -71,11 +86,15 @@ public class Booking implements Serializable{
 		this.numSeats = numSeats;
 	}
 
+	/**
+	 * A method to generate a String representing the most important data.
+	 * 
+	 * @return A String object containing the data.
+	 */
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
 		return event.toString() + " " + customerName;
 	}
-	
-	
+
 }
